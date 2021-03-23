@@ -23,7 +23,8 @@ debug:
 
 5 todo：controller和service，重构(Controller --->service ----> Mapper);
 
-6 统计信息和
+
+6 查看统计信息。不同种类的布料和不同的客户形成不同的统计信息
 
 
 
