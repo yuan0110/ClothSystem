@@ -5,6 +5,7 @@ import com.example.demo.model.Cloth;
 import java.text.DecimalFormat;
 import java.util.Random;
 
+//随机生成布匹信息
 public class ClothUtils {
     public Cloth getCloth(){
         Cloth cloth = new Cloth();

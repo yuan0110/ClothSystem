@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+//获取当前时间的时间戳
 public class TimeUtils {
     public Timestamp getTimeStamp(){
         Date date = new Date();
