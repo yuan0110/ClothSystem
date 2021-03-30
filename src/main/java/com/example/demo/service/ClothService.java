@@ -9,6 +9,7 @@ import java.util.List;
 
 @Service
 public class ClothService {
+    
 
     @Autowired
     public ClothMapper clothMapper;
@@ -24,8 +25,8 @@ public class ClothService {
     }
 
 //    3根据布料名字查询
-    public Cloth queryByname(String name){
-            return clothMapper.queryByname(name);
+    public Cloth queryByName(String name){
+            return clothMapper.queryByName(name);
     }
 
 //    4添加布料

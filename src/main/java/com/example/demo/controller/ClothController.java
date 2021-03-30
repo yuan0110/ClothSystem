@@ -15,6 +15,8 @@ public class ClothController {
     @Autowired
     ClothService clothService;
 
+
+
     @RequestMapping("/querybyid")
     Cloth queryById(int id){//这个id通过  ？id=  获取
         return clothService.queryById(id);
@@ -23,7 +25,7 @@ public class ClothController {
 
     @RequestMapping("querybyname")
     Cloth queryByName(String name){
-        return clothService.queryByname(name);
+        return clothService.queryByName(name);
     }
 
     @RequestMapping("/updatebyid")

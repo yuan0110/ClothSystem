@@ -3,10 +3,12 @@ package com.example.demo.mapper;
 
 import com.example.demo.model.Cloth;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Mapper
+@Repository
 public interface ClothMapper {
     @Select("select * from cloth limit 100")
     List<Cloth> queryAll();
@@ -15,7 +17,7 @@ public interface ClothMapper {
     Cloth queryById(int id);
 
     @Select("select * from cloth where name=#{name}")
-    Cloth queryByname(String name);
+    Cloth queryByName(String name);
 
     @Insert("insert into cloth values(#{id}," +
             "#{name},#{price},#{stock})")
