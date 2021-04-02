@@ -28,6 +28,12 @@ debug:
 
 第五周
 5.1 debug： Param用法
+用于DAO，在controller没有关系
+5.2 Redis缓存
+5.3 日志文件 
+todo：文件不显示
+
+
 
 
 

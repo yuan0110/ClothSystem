@@ -9,17 +9,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
-
+    public Logger logger = LoggerFactory.getLogger(UserController.class);
     @Autowired
     UserService userService;
 
     @RequestMapping("")
     List<User> getAll()
     {
-        return userService.getAll();
+        List<User> users = userService.getAll();
+//        logger.info("User.getAll"+users);
+        return users;
+
     }
 
     @RequestMapping("/reception")
