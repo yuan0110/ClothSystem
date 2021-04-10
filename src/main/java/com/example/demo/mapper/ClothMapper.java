@@ -10,7 +10,7 @@ import java.util.List;
 @Mapper
 @Repository
 public interface ClothMapper {
-    @Select("select * from cloth limit 100")
+    @Select("select * from cloth")
     List<Cloth> queryAll();
 
     @Select("select * from cloth where id=#{id}")
