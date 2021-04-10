@@ -1,0 +1,19 @@
+1. cloth
+    1. ""
+    2. querybyid
+    3. querybyname
+    4. updatebyid
+    5. add
+2. user
+    1. ""
+    2. reception
+    3. deliveryman
+    4. administrator
+3. order
+    1. produce
+    2. delivery
+4. statistics
+    1. "all":---->List<Order>
+    2. client
+    3. cloth
+
