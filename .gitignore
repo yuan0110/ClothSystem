@@ -5,7 +5,7 @@ target/
 !**/src/test/**/target/
 
 #过滤日志文件
-#com.example.log
+com.example.log
 
 
 ### STS ###
