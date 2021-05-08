@@ -1,22 +1,20 @@
 package com.example.demo.controller;
 
-import com.example.demo.mapper.UserMapper;
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 
 @RestController
+@Log4j2
 @RequestMapping("/user")
 public class UserController {
-    public Logger logger = LoggerFactory.getLogger(UserController.class);
+//    public Logger logger = LoggerFactory.getLogger(UserController.class);
     @Autowired
     UserService userService;
 
@@ -25,6 +23,7 @@ public class UserController {
     {
         List<User> users = userService.getAll();
 //        logger.info("User.getAll"+users);
+        log.info(users.size());
         return users;
 
     }

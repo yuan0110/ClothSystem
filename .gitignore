@@ -4,6 +4,10 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+#过滤日志文件
+#com.example.log
+
+
 ### STS ###
 .apt_generated
 .classpath
