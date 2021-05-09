@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${hello}?:'whyNot'">hello</title>
+</head>
+<body>
+<h1>我是hello！！thymeleaf</h1>
+<div th:text="${hello}">hello</div>
+<div th:if="${hello!=null}">hello</div>
+<div th:if="${hello==null}">value</div>
+<div th:if="${hello=='values'}">hello的值</div>
+
+<div th:each="user:${users}">
+    <li th:text="${user.getName()}">用户名</li>
+</div>
+
+</body>
+</html>

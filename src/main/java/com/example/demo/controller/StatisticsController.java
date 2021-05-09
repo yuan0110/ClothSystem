@@ -1,11 +1,9 @@
 package com.example.demo.controller;
 
-import com.example.demo.mapper.StatisticsMapper;
 import com.example.demo.model.Order;
 import com.example.demo.model.statistics.ClientSta;
 import com.example.demo.model.statistics.ClothSta;
 import com.example.demo.service.StatisticsService;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
