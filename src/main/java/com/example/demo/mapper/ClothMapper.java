@@ -17,10 +17,10 @@ public interface ClothMapper {
     Cloth queryById(int id);
 
     @Select("select * from cloth where name=#{name}")
-    Cloth queryByName(String name);
+    List<Cloth> queryByName(String name);
 
     @Insert("insert into cloth values(#{id}," +
-            "#{name},#{price},#{stock})")
+            "#{name},#{color},#{style},#{price},#{stock})")
     @Options(useGeneratedKeys = true,keyProperty = "id")
     int add(Cloth cloth);
 

@@ -15,4 +15,13 @@ public class IndexController {
     public String register(){
         return "register";
     }
+
+    @RequestMapping("/reception")
+    public String reception(){
+        return "reception";
+    }
+    @RequestMapping("/tab")
+    public String tab(){
+        return "tab";
+    }
 }

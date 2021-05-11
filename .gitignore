@@ -6,7 +6,7 @@ target/
 
 #过滤日志文件
 com.example.log
-
+logs
 
 ### STS ###
 .apt_generated

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Reception</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet" />
+    <script src="/layui/layui.js"></script>
+
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">reception 后台布局</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item"><a href="http://www.baidu.com">控制台</a></li>
+            <li class="layui-nav-item"><a href="javascript:;">查询</a>
+                <dl class="layui-nav-child">
+                    <dd>
+                        <a href="">id</a>
+                    </dd>
+                    <dd>
+                        <a href="">颜色</a>
+                    </dd>
+                    <dd>
+                        <a href="">款式</a>
+                    </dd>
+                </dl></li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item"><a href="javascript:;">reception</a>
+                <dl class="layui-nav-child">
+                    <dd>
+                        <a href="">个人中心</a>
+                    </dd>
+                </dl></li>
+            <li class="layui-nav-item"><a th:href="@{/login}">退出</a></li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="getcloth">
+                <li class="layui-nav-item layui-nav-itemed"><a class=""
+                                                               href="javascript:;">所有布料</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;">棉麻布</a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;">碎花布</a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;">蕾丝布</a>
+                        </dd>
+                         <dd>
+                            <a href="javascript:;">绒布</a>
+                        </dd>
+                         <dd>
+                            <a href="javascript:;">丝绸</a>
+                        </dd>
+                         <dd>
+                            <a href="javascript:;">毛纺布</a>
+                        </dd>
+                         <dd>
+                            <a href="javascript:;">混纺</a>
+                        </dd>
+
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="javascript:;" id="three">出单</a></li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <table id='demo' lay-filter='test'></table>
+        <script>
+            layui.use('table', function(){
+                var table = layui.table;
+                //第一个实例
+                table.render({
+                    elem: '#demo'
+                    ,height: 476
+                    ,base: 'http://localhost:8080'
+                    ,url: '/cloth/list' //数据接口
+                    ,page: true //开启分页
+                    ,limit: 10
+                    ,cols: [
+                        [ //表头
+                            {field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'}
+                            ,{field: 'name', title: '名称', width:80}
+                            ,{field: 'color', title: '颜色', width:80}
+                            ,{field: 'style', title: '款式', width:80}
+                            ,{field: 'price', title: '价格', width:80, sort: true}
+                            ,{field: 'stock', title: '库存', width:80, sort: true}
+                            ,{field: 'right', title: '操作', width:160, toolbar:"#toolbarDemo"}
+                        ]
+                    ]
+                });
+
+            });
+
+        </script>
+    </div>
+
+</div>
+<script type="text/html" id="toolbarDemo">
+    <div class="layui-btn-container">
+        <a href="#three" class="layui-btn">出单</a>
+        <button lay-submit class="layui-btn layui-btn-sm" lay-event="addOrder">出单</button>
+        <button class="layui-btn layui-btn-sm layui-btn-danger" lay-event="noGood">没货</button>
+    </div>
+</script>
+
+<script>
+    //JavaScript代码区域
+    layui.use(['element','form','table'], function() {
+        var element = layui.element
+            ,table = layui.table
+            ,form = layui.form
+            ,$ = layui.jquery;
+
+        element.on('nav(getcloth)',function (data){
+            var name = data.context.innerText
+            layui.use('table', function(){
+                var table = layui.table;
+                //第一个实例
+                table.render({
+                    elem: '#demo'
+                    ,height: 476
+                    ,base: 'http://localhost:8080'
+                    ,url: '/cloth/list' //数据接口
+                    ,page: true //开启分页
+                    ,limit: 10
+                    ,where:{
+                        name:name
+                    }
+                    ,cols: [
+                        [ //表头
+                            {field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'}
+                            ,{field: 'name', title: '名称', width:80}
+                            ,{field: 'color', title: '颜色', width:80}
+                            ,{field: 'style', title: '款式', width:80}
+                            ,{field: 'price', title: '价格', width:80, sort: true}
+                            ,{field: 'stock', title: '库存', width:80, sort: true}
+                            ,{field: 'right', title: '操作', width:160, toolbar:"#toolbarDemo"}
+                        ]
+                    ]
+                });
+
+            });
+
+        })
+        // form.on('submit(onadd)',function (data){
+        //     console.log(data);
+        // })
+        //监听工具条
+        table.on('tool(test)', function(obj) {
+            var data = obj.data, layEvent = obj.event; //获得 lay-event 对应的值;
+            console.log(data);
+            console.log(layEvent);
+            var datajson = {}
+            data['handerman'] = 'lisi'
+            if (layEvent === 'noGood') {
+                layer.confirm('是否提醒进货？', function(index) {
+                    var loading = layer.load(2);
+                    //提交 Ajax 成功后，关闭当前弹层并重载表格
+                    $.ajax({
+                        type: 'get',
+                        url: '/stockout/add',
+                        dataType: 'json',
+                        data: data,//往后台发送的是data.field，即一个{name：value}的数据结构
+                        async: true,
+                        success : function(res) {
+                            layer.close(loading);
+                            if (res.code == 0) {
+                                // layui.table.reload('demo'); //重载表格
+                                layer.msg("已通知管理员");
+                                layer.close(index); //执行关闭
+                            } else {
+                                layer.msg('提醒异常');
+                            }
+                        }
+                    });
+                });
+            } //if(layEvent === 'del') 后面的
+            else if(layEvent === 'addOrder'){
+                layer
+            }
+        });
+    });
+</script>
+</body>
+</html>

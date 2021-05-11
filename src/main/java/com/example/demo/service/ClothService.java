@@ -13,7 +13,7 @@ import java.util.List;
 @CacheConfig(cacheNames = "cloth")
 @Service
 public class ClothService {
-    
+
 
     @Autowired
     public ClothMapper clothMapper;
@@ -31,7 +31,7 @@ public class ClothService {
 
 //    3根据布料名字查询
     @Cacheable(key="#p0")
-    public Cloth queryByName(String name){
+    public List<Cloth> queryByName(String name){
             return clothMapper.queryByName(name);
     }
 

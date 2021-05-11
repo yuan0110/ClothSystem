@@ -11,8 +11,8 @@
         <div class="layui-logo">layui 后台布局</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="">控制台</a></li>
-            <li class="layui-nav-item"><a href="">商品管理</a></li>
+            <li class="layui-nav-item"><a href="http://www.baidu.com">控制台</a></li>
+            <li class="layui-nav-item"><a th:href="@{/hello/example}">商品管理</a></li>
             <li class="layui-nav-item"><a href="">用户</a></li>
             <li class="layui-nav-item"><a href="javascript:;">其它系统</a>
                 <dl class="layui-nav-child">
@@ -44,15 +44,15 @@
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+            <ul class="layui-nav layui-nav-tree" lay-filter="testnav">
                 <li class="layui-nav-item layui-nav-itemed"><a class=""
                                                                href="javascript:;">所有商品</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;">列表一</a>
+                            <a href="javascript:;" id="one">列表一</a>
                         </dd>
                         <dd>
-                            <a href="javascript:;">列表二</a>
+                            <a href="javascript:;" id="two">列表二</a>
                         </dd>
                         <dd>
                             <a href="javascript:;">列表三</a>
@@ -73,7 +73,7 @@
                             <a href="">超链接</a>
                         </dd>
                     </dl></li>
-                <li class="layui-nav-item"><a href="">云市场</a></li>
+                <li class="layui-nav-item"><a href="javascript:;" id="three">云市场</a></li>
                 <li class="layui-nav-item"><a href="">发布商品</a></li>
             </ul>
         </div>
@@ -81,10 +81,10 @@
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <div style="padding: 15px;">内容主体区域</div>
-    </div>
 
-    <div class="layui-footer">
+        <table id='demo' lay-filter='test'></table>
+
+        <div class="layui-footer">
         <!-- 底部固定区域 -->
         © layui.com - 底部固定区域
     </div>
@@ -92,9 +92,43 @@
 <script th:src="@{/layui/layui.js}"></script>
 <script>
     //JavaScript代码区域
-    layui.use('element', function() {
+    layui.use(['table','element','jquery'], function() {
         var element = layui.element;
+        var table = layui.table;
+        var $ = layui.jquery;
+        // element.on('nav(one)',function (){
+        //     table.render({
+        //         elem: '#demo'
+        //         ,height: 476
+        //         ,base: 'http://localhost:8080'
+        //         ,url: '/cloth/list?name=丝绸' //数据接口
+        //         ,page: true //开启分页
+        //         ,limit: 10
+        //         ,cols: [
+        //             [ //表头
+        //                 {field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'}
+        //                 ,{field: 'name', title: '名称', width:80}
+        //                 ,{field: 'color', title: '颜色', width:80}
+        //                 ,{field: 'style', title: '款式', width:80}
+        //                 ,{field: 'price', title: '价格', width:80, sort: true}
+        //                 ,{field: 'stock', title: '库存', width:80}
+        //                 // ,{field: 'sign', title: '签名', width: 177}
+        //                 // ,{field: 'experience', title: '积分', width: 80, sort: true}
+        //                 // ,{field: 'score', title: '评分', width: 80, sort: true}
+        //                 // ,{field: 'classify', title: '职业', width: 80}
+        //                 // ,{field: 'wealth', title: '财富', width: 135, sort: true}
+        //             ]
+        //         ]
+        //     });
+        //
+        // }
 
+        var table = layui.table;
+        var $ = layui.jquery;
+        element.on('nav(testnav)',function (data){
+            // console.log(this.getAttribute('id'));
+            console.log(data.context.innerText)
+        })
     });
 </script>
 </body>

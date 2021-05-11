@@ -14,3 +14,13 @@ CREATE TABLE clothorder(
     endtime     TIMESTAMP       default null,
     PRIMARY KEY(id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+drop table if exists stockout;
+create table stockout(
+                       id int(11) not null,
+                       stock double default 0.0,
+                       handerman varchar(255) default null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into stockout values(1,1.0,"reception");
+select * from stockout;
