@@ -22,7 +22,7 @@
 
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn" lay-submit lay-filter="formDemo">登 录</button>
+            <button class="layui-btn" lay-submit lay-filter="login">登 录</button>
             <a th:href="@{/register}">注册</a>
         </div>
     </div>
@@ -30,14 +30,41 @@
 
 
 <script src="/layui/layui.js"></script>
-<script>
+<script type="text/javascript" th:inline="javascript">
     //Demo
-    layui.use('form', function(){
+    layui.use(['form','jquery'], function(){
         var form = layui.form;
+        var $=layui.jquery;
 
         //监听提交
-        form.on('submit(formDemo)', function(data){
-            layer.msg(JSON.stringify(data.field));
+        form.on('submit(login)', function(data){
+            // layer.msg(JSON.stringify(data.field));
+            console.log(data.field)
+            $.ajax({
+                type: 'get',
+                url: '/loginAuthen',
+                dataType: 'json',
+                data: data.field,//往后台发送的是data.field，即一个{name：value}的数据结构
+                async: true,
+                success: function (result) {
+                    if (result.code == 0) {
+                        console.log("success")
+                        layer.msg('保存成功', {icon: 1, time: 1000});
+                        window.location.href='http://localhost:8080/hello/example';
+                        // self.location.href="/register.html"
+                        //
+                        // setTimeout(function () {
+                        //     self.location.assign = '/register';
+                        // }, 800);
+                    } else {
+                        layer.msg('保存失败！' + result.msg, {icon: 2, time: 1000});
+                    }
+                },
+                error: function (result, type) {
+                    layer.msg('保存失败！', {icon: 2, time: 1000});
+                }
+            });
+
             return false;
         });
     });

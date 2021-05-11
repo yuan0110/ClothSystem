@@ -1,0 +1,14 @@
+09:19:40.438 [main] INFO  com.example.demo.DemoApplication - Starting DemoApplication using Java 1.8.0_131 on beike with PID 12624 (E:\IDEA2020\clothsystem\target\classes started by 75654 in E:\IDEA2020\clothsystem)
+09:19:40.469 [main] INFO  com.example.demo.DemoApplication - No active profile set, falling back to default profiles: default
+09:19:43.362 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+09:19:43.362 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+09:19:43.362 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.43]
+09:19:43.956 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+09:19:46.570 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+09:19:46.618 [main] INFO  com.example.demo.DemoApplication - Started DemoApplication in 7.253 seconds (JVM running for 10.795)
+09:20:12.110 [http-nio-8080-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+09:20:12.159 [http-nio-8080-exec-1] INFO  com.example.demo.controller.HelloWorld - visit helloController.
+09:20:12.166 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+09:20:14.031 [http-nio-8080-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+09:20:30.009 [http-nio-8080-exec-10] INFO  com.example.demo.controller.HelloWorld - visit helloController.
+09:21:01.043 [http-nio-8080-exec-4] INFO  com.example.demo.controller.HelloWorld - visit helloController.

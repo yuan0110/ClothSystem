@@ -36,9 +36,9 @@
         <div class="layui-input-inline">
             <select name="role" lay-verify="required">
                 <option value=""></option>
-                <option value="0">admin</option>
-                <option value="1">reception</option>
-                <option value="2">deliveryman</option>
+                <option >admin</option>
+                <option >reception</option>
+                <option >deliveryman</option>
             </select>
         </div>
     </div>
@@ -51,7 +51,7 @@
     </div>
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn" lay-submit lay-filter="formDemo">注册</button>
+            <button class="layui-btn" lay-submit lay-filter="onRegister">注册</button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
         </div>
     </div>
@@ -60,26 +60,45 @@
 <script src="/layui/layui.js"></script>
 <script>
     //Demo
-    layui.use('form', function(){
-        var form = layui.form;
+    layui.use(['form','jquery'], function(){
+        var form = layui.form
+        ,$ = layui.jquery;
 
         //监听提交
-        form.on('submit(formDemo)', function(data){
-            layer.msg(JSON.stringify(data.field));
+        form.on('submit(onRegister)', function(data){
+            // layer.msg(JSON.stringify(data.field));
+            console.log(data.field)
+            $.ajax({
+                type: 'get',
+                url: '/registerAuthen',
+                dataType: 'json',
+                data: data.field,//往后台发送的是data.field，即一个{name：value}的数据结构
+                async: true,
+                success: function (result) {
+                    if (result.code == 0) {
+                        console.log("success")
+                        layer.msg('保存成功', {icon: 1, time: 1000});
+                        window.location.href='http://localhost:8080/login';
+                        // self.location.href="/register.html"
+                        //
+                        // setTimeout(function () {
+                        //     self.location.assign = '/register';
+                        // }, 800);
+                    } else {
+                        layer.msg('保存失败！' + result.msg, {icon: 2, time: 1000});
+                    }
+                },
+                error: function (result, type) {
+                    layer.msg('保存失败！', {icon: 2, time: 1000});
+                }
+            });
+
             return false;
         });
+
     });
 </script>
 </body>
 
-<script src="/layui/layui.js"></script>
-<script>
-    // var $ = layui.$
-    layui.use('form', function(){
-        var form = layui.form;
-
-        //各种基于事件的操作，下面会有进一步介绍
-    });
-</script>
 
 </html>
